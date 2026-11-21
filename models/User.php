@@ -3,8 +3,6 @@ class User
 {
   // 1ra Parte: Atributos
   private $dbh;
-  private $rol_code;
-  private $rol_name;
   private $user_code;
   private $user_name;
   private $user_lastname;
@@ -29,21 +27,16 @@ class User
   }
 
   # Constructor: Objeto 00 parámetros
-  public function __construct0()
-  {
-  }
+  public function __construct0(){}
 
-  # Constructor: Objeto 02 parámetros
-  public function __construct2($user_email, $user_pass)
-  {
+  # Constructor: Objeto 02 parámetros. Iniciar Sesión
+  public function __construct2($user_email, $user_pass){
     $this->user_email = $user_email;
     $this->user_pass = $user_pass;
   }
 
   # Constructor: Objeto 08 parámetros
-  public function __construct8($rol_code, $user_code, $user_name, $user_lastname, $user_id, $user_email, $user_pass, $user_state)
-  {
-    $this->rol_code = $rol_code;
+  public function __construct7($user_code, $user_name, $user_lastname, $user_id, $user_email, $user_pass, $user_state){
     $this->user_code = $user_code;
     $this->user_name = $user_name;
     $this->user_lastname = $user_lastname;
@@ -56,24 +49,7 @@ class User
   # Constructor: Objeto 09 parámetros
 
   // 3ra Parte: Setter y Getters
-  # Código Rol
-  public function setRolCode($rol_code)
-  {
-    $this->rol_code = $rol_code;
-  }
-  public function getRolCode()
-  {
-    return $this->rol_code;
-  }
-  # Nombre Rol
-  public function setRolName($rol_name)
-  {
-    $this->rol_name = $rol_name;
-  }
-  public function getRolName()
-  {
-    return $this->rol_name;
-  }
+  
   # Código Usuario
   public function setUserCode($user_code)
   {
@@ -138,20 +114,7 @@ class User
     return $this->user_state;
   }
 
-  // 4ta Parte: Persistencia a la Base de Datos
-
-  # RF03_CU03 - Registrar Rol
-  public function create_rol() {
-    try {
-      $sql = 'INSERT INTO ROLES VALUES (:rolCode,:rolName)';
-      $stmt = $this->dbh->prepare($sql);
-      $stmt->bindValue('rolCode', $this->getRolCode());
-      $stmt->bindValue('rolName', $this->getRolName());
-      $stmt->execute();
-    } catch (Exception $e) {
-      die($e->getMessage());
-    }
-  }
+  // 4ta Parte: Persistencia a la Base de Datos 
 
 
 }
