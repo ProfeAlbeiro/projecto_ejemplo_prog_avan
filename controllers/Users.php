@@ -1,20 +1,12 @@
 <?php
+  require_once "models/User.php";
 	class Users{
 		public function main(){}
 		public function Register(){
-      require_once "models/User.php";
-      // Instancia la Clase
-      $user = new User;
-      
-      // Pasar los datos
-      $user->setRolCode(1);
-      $user->setUserCode(1);
-      $user->setUserName("Albeiro");
-
-      // Retornar los Datos
-      echo "<br>" . "Código Rol: " . $user->getRolCode();
-      echo "<br>" . "Código Usuario: " . $user->getUserCode();
-      echo "<br>" . "Nombre Usuario: " . $user->getUserName();
+      $user1 = new User;
+      $user1->setRolCode(null);
+      $user1->setRolName("cajero");
+      $user1->create_rol();
     }
 	}
 ?>
